@@ -301,20 +301,20 @@
       // Necessary when crop image is within a hidden element when page is loaded.
       if ($origimg[0].width != 0 && $origimg[0].height != 0) {
         // Obtain dimensions from contained img element.
-        $origimg.width($origimg[0].width);
-        $origimg.height($origimg[0].height);
+        $origimg.width($origimg[0].naturalWidth);
+        $origimg.height($origimg[0].naturalHeight);
       } else {
         // Obtain dimensions from temporary image in case the original is not loaded yet (e.g. IE 7.0). 
         var tempImage = new Image();
         tempImage.src = $origimg[0].src;
-        $origimg.width(tempImage.width);
-        $origimg.height(tempImage.height);
+        $origimg.width(tempImage.naturalWidth);
+        $origimg.height(tempImage.naturalHeight);
       } 
 
       var $img = $origimg.clone().removeAttr('id').css(img_css).show();
 
-      $img.width($origimg.width());
-      $img.height($origimg.height());
+      $img.width($origimg[0].naturalWidth);
+      $img.height($origimg[0].naturalHeight);
       $origimg.after($img).hide();
 
     } else {
